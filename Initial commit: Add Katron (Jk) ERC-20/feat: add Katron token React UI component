@@ -1,0 +1,67 @@
+import { useState } from "react";
+
+export default function KatronDappUI() {
+  const [account, setAccount] = useState("");
+  const [balance, setBalance] = useState("0");
+  const [totalSupply, setTotalSupply] = useState("0");
+  const [isPaused, setIsPaused] = useState(false);
+
+  const connectWallet = () => {
+    alert(" Connect wallet function will go here");
+    setAccount("0xYourWalletAddress");
+  };
+
+  const transferTokens = () => {
+    alert(" Transfer function will go here");
+  };
+
+  const mintTokens = () => {
+    alert(" Mint function will go here (owner only)");
+  };
+
+  const burnTokens = () => {
+    alert(" Burn function will go here");
+  };
+
+  const pause = () => {
+    setIsPaused(true);
+    alert(" Contract paused (UI only)");
+  };
+
+  const unpause = () => {
+    setIsPaused(false);
+    alert(" Contract unpaused (UI only)");
+  };
+
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h1> Katron (Jk) Token DApp</h1>
+
+      {!account ? (
+        <button onClick={connectWallet}>Connect Wallet</button>
+      ) : (
+        <>
+          <p>Connected: {account}</p>
+          <p>Balance: {balance} Jk</p>
+          <p>Total Supply: {totalSupply} Jk</p>
+          <p>Status: {isPaused ? "⏸ Paused" : " Active"}</p>
+
+          <hr />
+
+          <h3>Transfer Tokens</h3>
+          <button onClick={transferTokens}>Send Tokens</button>
+
+          <h3>Mint Tokens (Owner Only)</h3>
+          <button onClick={mintTokens}>Mint Tokens</button>
+
+          <h3>Burn Tokens</h3>
+          <button onClick={burnTokens}>Burn Tokens</button>
+
+          <h3>Pause Controls (Owner Only)</h3>
+          <button onClick={pause}>Pause</button>
+          <button onClick={unpause}>Unpause</button>
+        </>
+      )}
+    </div>
+  );
+}
